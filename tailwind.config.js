@@ -17,6 +17,5 @@ module.exports = {
         "spin-slow": "spin 6s linear infinite",
       },
     },
-  },
-  plugins: ["prettier-plugin-tailwindcss"],
+  }
 };
