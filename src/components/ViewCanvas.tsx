@@ -2,6 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { SodaCan } from "./SodaCan";
+import { Environment } from "@react-three/drei";
 
 type Props = {};
 
@@ -25,8 +26,7 @@ export default function ViewCanvas({}: Props) {
       }}
     >
       <SodaCan />
-      <ambientLight intensity={2} />
-      <spotLight intensity={3} position={[1, 1, 1]} />
+      <Environment files="/hdr/lobby.hdr" environmentIntensity={1.5} />
     </Canvas>
   );
 }
