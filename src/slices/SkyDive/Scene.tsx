@@ -1,8 +1,15 @@
 "use client";
 
 import FloatingCan from "@/components/FloatingCan";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Content } from "@prismicio/client";
-import { Cloud, Clouds, Environment, OrbitControls } from "@react-three/drei";
+import {
+  Cloud,
+  Clouds,
+  Environment,
+  OrbitControls,
+  Text,
+} from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
@@ -33,6 +40,9 @@ export default function Scene({ sentence, flavor }: SkyDiveProps) {
       </Clouds>
 
       {/* Text */}
+      <group ref={wordsRef}>
+        {sentence && <ThreeText sentence={sentence} color="#F97315" />}
+      </group>
 
       <OrbitControls />
 
@@ -41,4 +51,33 @@ export default function Scene({ sentence, flavor }: SkyDiveProps) {
       <Environment files="/hdr/field.hdr" environmentIntensity={1.5} />
     </group>
   );
+}
+
+function ThreeText({
+  sentence,
+  color = "white",
+}: {
+  sentence: string;
+  color?: string;
+}) {
+  const words = sentence.toUpperCase().split(" ");
+
+  const material = new THREE.MeshLambertMaterial();
+  const isDesktop = useMediaQuery("(min-width: 950px)", true);
+
+  return words.map((word: string, wordIndex: number) => (
+    <Text
+      key={`${wordIndex}-${word}`}
+      scale={isDesktop ? 1 : 0.5}
+      color={color}
+      material={material}
+      font="/fonts/Alpino-Variable.woff"
+      fontWeight={900}
+      anchorX={"center"}
+      anchorY={"middle"}
+      characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!,.?"
+    >
+      {word}
+    </Text>
+  ));
 }
