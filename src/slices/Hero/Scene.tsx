@@ -77,7 +77,7 @@ export default function Scene({}: Props) {
         duration: 2,
       },
       scrollTrigger: {
-        trigger: "hero",
+        trigger: ".hero",
         start: "top top",
         end: "bottom bottom",
         scrub: 1.5,
