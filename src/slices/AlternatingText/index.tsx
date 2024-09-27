@@ -1,5 +1,13 @@
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+"use client";
+
+import { asText, Content } from "@prismicio/client";
+import {
+  PrismicRichText,
+  PrismicText,
+  SliceComponentProps,
+} from "@prismicio/react";
+
+import { Bounded } from "@/components/Bounded";
 
 /**
  * Props for `AlternatingText`.
@@ -12,13 +20,33 @@ export type AlternatingTextProps =
  */
 const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="alternating-text-container relative text-sky-950"
     >
-      Placeholder component for alternating_text (variation: {slice.variation})
-      Slices
-    </section>
+      <div>
+        <div className="relative grid">
+          {/* View goes here */}
+
+          {slice.primary.text_group.map((item, index) => (
+            <div
+              key={asText(item.heading)}
+              className="alternating-section grid h-screen place-items-center gap-x-12 md:grid-cols-2"
+            >
+              <div className={index % 2 === 0 ? "col-start-1" : "col-start-2"}>
+                <h2 className="text-balance text-6xl font-bold">
+                  <PrismicText field={item.heading} />
+                </h2>
+                <div className="mt-4 text-xl">
+                  <PrismicRichText field={item.body} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Bounded>
   );
 };
 
