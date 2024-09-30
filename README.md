@@ -1,3 +1,19 @@
+# 🥤 Soda themed 3D landing page
+
+![fizzi-hero](https://github.com/user-attachments/assets/7c3174b2-ad00-4bd2-ae52-50ea0a86c4ce)
+
+### Fun animated 3D landing page themed around the fictional brand 'Fizzi'.\
+### This site was made by following the [amazing course](https://www.youtube.com/watch?v=RKQqrNyAC6k&t=20892s) provided by Alex over at [Prismic](https://www.youtube.com/@Prismic).
+
+## 🎨 Features
+
+- NextJS 14
+- Prismic CMS
+- Typescript
+- TailwindCSS
+- GSAP
+- React Three Fiber
+
 ## Documentation
 
 For the official Prismic documentation, see [Prismic's guide for Next.js][prismic-docs] or the [technical references for the installed Prismic packages](https://prismic.io/docs/technologies/technical-references).
